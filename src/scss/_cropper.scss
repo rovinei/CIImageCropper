@@ -1,0 +1,290 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding: 20px;
+    text-align: center;
+    color: #111;
+    background: #fafafa;
+}
+
+img {
+    max-width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.clearfix {
+    &:before,
+    &:after {
+        display: table;
+        content: "";
+    }
+
+    &:after{
+        clear: both;
+    }
+}
+
+.cropper {
+    position: relative;
+    .drop {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        font-family: Lobster, Arial, serif;
+        font-size: 33px;
+        line-height: 40px;
+        color: #333;
+        background-color: rgba(255,255,255,1);
+        border: 5px dashed rgba(51,51,51,.3);
+        cursor: pointer;
+        transition-properties: border;
+        transition-duration: 0.2s;
+        
+        .icon-upload{
+            display: block;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2EC4B6;
+        }
+
+        &.dragging,
+        &:hover {
+            border-color: rgba(51,51,51,.8);
+        }
+      
+        p {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            padding: 20px;
+            transform: translateY(-50%);
+            margin: 0;
+            text-align: center;
+        }
+    }
+
+    #sectionResize,
+    #sectionDragAndDrop{
+        max-width: 400px;
+        max-height: 400px;
+        width: 400px;
+        height: 400px;
+        position: relative;
+        margin: 0 auto;
+
+        &:after,
+        &before{
+            display: table;
+            content: "";
+        }
+
+        &:after{
+            clear: both;
+        }
+    }
+
+    .image-resize,
+    .image-resize__outter {
+        position: relative;
+        width: 100%;
+        margin: auto;
+    }
+
+    .image-resize__outter {
+        display: flex;
+    }
+
+
+
+    .image-resize__bg {
+        float: left;
+        position: relative;
+        padding: 10px;
+        background: aliceblue;
+        flex: 1;
+    }
+
+    .ratio-choice__wrapper {
+        position: relative;
+        width: 60px;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        flex-basis: all;
+
+        .choice {
+            display: block;
+            padding: 0 0 1px 0;
+            flex: 1;
+            display: flex;
+        }
+
+        button {
+            outline: none;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 5px;
+            display: block;
+            width: 100%;
+            cursor: pointer;
+            font-size: 15px;
+            font-family: "Ubuntu", sans-serif;
+            transition: background 0.1s ease-in, transform 0.07s ease-out;
+
+            &:hover {
+                background: #555;
+                transform: translateX(5px);
+            }
+        }
+    }
+
+    .horizontal-setting {
+        position: relative;
+        width: 100%;
+        padding: 10px;
+        background: #fff;
+        display: flex;
+
+        .setting-item{
+            position: relative;
+            text-align: left;
+            float: left;
+            list-style-type: none;
+            width: 50%;
+            flex: 1;
+            flex-grow: 1;
+            display: flex;
+
+            &.manaul {
+                padding-left: 15px;
+            }
+        }
+
+        .compress-quality-auto {
+            border-right: 1px solid #cecece;
+            label {
+                display: flex;
+                align-items: center;
+                z-index: 1;
+                padding-left: 30px;
+                width: 100%;
+                font: normal normal normal 14px/1 FontAwesome;
+
+                &:after {
+                    position: absolute;
+                    content: "";
+                    text-align: center;
+                    line-height: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 15px;
+                    height: 24px;
+                    width: 24px;
+                    left: 0px;
+                    top: 50%;
+                    margin-top: -12px;
+                    background: transparent;
+                    vertical-align: middle;
+                    border: 2px solid #000;
+                    box-sizing: border-box;
+                    transition: background 0.2s ease-out, border 0.1s ease-in;
+                    cursor: pointer;
+                    color: #fafafa;
+                }
+
+            }
+            input {
+                width: 0;
+                height: 0;
+                visibility: hidden;
+
+                &:checked + label:after{
+                    background: #84B1ED;
+                    border-color: #84B1ED;
+                    content: "\f00c";
+                }
+
+                &:disabled + label:after{
+                    opacity: 0.2;
+                }
+            }
+
+            span {
+                padding-right: 40px;
+                vertical-align: middle;
+                line-height: 1;
+                font-family: "Ubuntu", sans-serif;
+            }
+        }
+
+        .compress-quality-manaul {
+            border: 1px solid #eee;
+            height: 26px;
+            width: 100%;
+            padding: 4px 4px 4px 8px;
+            line-height: 1;
+            display: block;
+            font-family: "Ubuntu", sans-serif;
+            font-size: 13px;
+            box-shadow: inset 0px 1px 1px rgba(100, 100, 51, 0.1);
+
+            &:disabled{
+                opacity: 0.2;
+            }
+        }
+    }
+
+    .btn-crop {
+        margin-top: 20px;
+        padding: 10px 25px;
+        font-family: "Ubuntu";
+        font-size: 16px;
+        color: #fff;
+        background-image: linear-gradient(to bottom, #60c5ba 0%, #61b9ae 100%);
+        border: 0;
+        border-radius: 20px;
+        cursor: pointer;
+        box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+        -webkit-transition: box-shadow 0.3s ease;
+        -moz-transition: box-shadow 0.3s ease;
+        -ms-transition: box-shadow 0.3s ease;
+        -o-transition: box-shadow 0.3s ease;
+        transition: all 0.7s ease;
+        &:hover {
+            box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        .fa:first-child {
+            margin-right: 5px; 
+        }
+    }
+
+    .cropper-thumbnail__preview {
+        margin: auto;
+        padding: 5px;
+        background-color: rgba(255,255,255,.4);
+        border-radius: 5px;
+      
+        img {
+            display: block;
+            border-radius: 5px;
+        }
+    }
+}
+

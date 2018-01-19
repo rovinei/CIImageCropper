@@ -1,0 +1,36 @@
+{
+  "name": "veirdo-digital-imagecropper",
+  "version": "1.0.0",
+  "description": "Preview cropping image before upload with javascript using cropper library",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rovinei/ImageCropper.git"
+  },
+  "keywords": [
+    "cropper",
+    "image",
+    "cropper"
+  ],
+  "author": "Veirdo Digital",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rovinei/ImageCropper/issues"
+  },
+  "homepage": "https://github.com/rovinei/ImageCropper#readme",
+  "dependencies": {
+    "babel-preset-stage-2": "^6.24.1",
+    "cropperjs": "^1.2.2",
+    "jquery": "^3.2.1",
+    "normalize.css": "^7.0.0",
+    "sweetalert2": "^7.3.5"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "webpack": "^3.10.0"
+  }
+}
